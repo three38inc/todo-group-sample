@@ -1,3 +1,51 @@
-html, body {
-    background-color: beige;
+html{
+    height: 100%;
+}
+
+body{
+    background: linear-gradient(120deg, rgba(246,160,101,1) 50%, rgba(238,118,102,1) 96%);
+}
+
+.container{
+    margin: 7% auto;
+    width: 30%;
+    height: 50%;
+    background: #ffffff;
+}
+
+.header{
+    padding: 10px;
+    color: #ffffff;
+    background: rgb(246,160,101);
+    background: linear-gradient(0deg, rgba(246,160,101,1) 0%, rgba(238,118,102,1) 100%);}
+
+.header-brand{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header-image{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.newTask{
+    padding: 20px 10px;
+}
+
+.newTaskBtn{
+   width: 100%;
+   height: 35px;
+   border-radius: 20px;
+   border: 2px solid #FF6580;
+   color: #FF6580;
+   background: transparent;
+
+}
+
+.pendingTasks ul li{
+    border-radius: 20px;
+    box-shadow: #FF6580;
 }
