@@ -1,41 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ToDo - Sample</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div class="container">
-        <div class="header">
-            <div class="header-brand">
-                <p>Monday, October 3</p>
-                <div class="header-image">
-                    <i class="fa fa-calendar" style="font-size:36px"></i>
-                </div>
-            </div>
+      <div class="header">
+        <div class="header-brand">
+          <div>Monday, October 3</div>
+          <div class="header-image">
+            <i class="fa fa-calendar" style="font-size: 36px"></i>
+          </div>
         </div>
+      </div>
 
-        <div class="newTask">
-            <div>
-                <button class="newTaskBtn">+ Add new</button>
-            </div>
+      <div class="newTask">
+        <div>
+          <button class="newTaskBtn">+ Add new</button>
         </div>
+      </div>
 
-        <div class="oldTasks">
-            <div class="pendingTasks">
-                <ul>
-                    <li>Morning run</li>
-                </ul>
+      <div class="oldTasks">
+        <div class="pendingTasks">
+          <div class="tasks">
+            <div class="task">Morning run</div>
+            <div class="check-icon">
+              <i class="fa fa-check" aria-hidden="true"></i>
             </div>
-            <div class="completedTasks">
-                <ul>
-                    <li>Yoga</li>
-                </ul>
+          </div>
+          <div class="tasks">
+            <div class="task">Lunch with Alex</div>
+            <div class="check-icon">
+              <i class="fa fa-check" aria-hidden="true"></i>
             </div>
+          </div>
+          <div class="tasks">
+            <div class="task">Pay Bills</div>
+            <div class="check-icon">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </div>
+          </div>
         </div>
+        
+        <div class="completedTasks">
+            <div class="tasks">
+              <div class="task">Morning run</div>
+              <div class="check-icon">
+                <i class="fa fa-check" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="tasks">
+              <div class="task">Lunch with Alex</div>
+              <div class="check-icon">
+                <i class="fa fa-check" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="tasks">
+              <div class="task">Pay Bills</div>
+              <div class="check-icon">
+                <i class="fa fa-check" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

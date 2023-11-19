@@ -4,11 +4,14 @@ html{
 
 body{
     background: linear-gradient(120deg, rgba(246,160,101,1) 50%, rgba(238,118,102,1) 96%);
+    font-family: 'Karla', sans-serif;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
 }
 
 .container{
     margin: 7% auto;
-    width: 30%;
+    width: 25%;
     height: 50%;
     background: #ffffff;
 }
@@ -23,6 +26,8 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: baseline;
+    font-size: 16px;
 }
 
 .header-image{
@@ -45,7 +50,74 @@ body{
 
 }
 
-.pendingTasks ul li{
-    border-radius: 20px;
-    box-shadow: #FF6580;
+.oldTasks{
+    min-height: 400px;
+}
+
+.pendingTasks .tasks{
+       display: flex;
+       flex-direction: row;
+       justify-content: space-between;
+}
+
+
+.pendingTasks .tasks .task{ 
+    /* position: relative; */
+    line-height: 40px;
+    top: 10px;
+    /* left: -41px; */
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background: #ffffff;
+    border-left: 5px solid #FF6580;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    list-style: none;
+    margin-bottom: 20px;
+    width: 80%;
+}
+
+.pendingTasks .tasks .check-icon{
+   color:#d9d2d2;;
+   border:1px solid #d9d2d2;;
+   border-radius: 20px;
+   padding: 5px;
+   height: 20px;
+   width: 20px;
+   box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+   margin-right: 6px;
+   font-size: 25px;
+}
+
+
+
+.completedTasks .tasks{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+
+.completedTasks .tasks .task{ 
+  line-height: 40px;
+  top: 10px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background: #ffffff;
+  border-right: 5px solid #FF6580;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  list-style: none;
+  margin-bottom: 20px;
+  width: 80%;
+}
+
+.completedTasks .tasks .check-icon{
+background-color: #ffffff;
+color:#45E0D8;
+border-radius: 20px;
+padding: 5px;
+height: 20px;
+width: 20px;
+box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+margin-left: 6px;
+font-size: 25px;
 }
