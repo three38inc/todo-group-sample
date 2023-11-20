@@ -105,6 +105,7 @@ body {
   list-style: none;
   width: 80%;
   padding: 10px;
+  text-transform: capitalize;
 }
 
 .task .check-icon {
