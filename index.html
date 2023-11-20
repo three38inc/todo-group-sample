@@ -8,9 +8,12 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Karla&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla&family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -19,59 +22,34 @@
         <div class="header-brand">
           <div>Monday, October 3</div>
           <div class="header-image">
-            <i class="fa fa-calendar" style="font-size: 36px"></i>
+            <i class="fa fa-calendar"></i>
           </div>
         </div>
       </div>
 
-      <div class="newTask">
-        <div>
-          <button class="newTaskBtn">+ Add new</button>
-        </div>
+      <div class="task-form">
+        <input type="text" placeholder="Type your task here ...">
+        <button class="new-task-btn">
+          <i class="fa fa-plus"></i>  
+          Add new
+        </button>
       </div>
 
-      <div class="oldTasks">
-        <div class="pendingTasks">
-          <div class="tasks">
-            <div class="task">Morning run</div>
-            <div class="check-icon">
-              <i class="fa fa-check" aria-hidden="true"></i>
-            </div>
-          </div>
-          <div class="tasks">
-            <div class="task">Lunch with Alex</div>
-            <div class="check-icon">
-              <i class="fa fa-check" aria-hidden="true"></i>
-            </div>
-          </div>
-          <div class="tasks">
-            <div class="task">Pay Bills</div>
-            <div class="check-icon">
-              <i class="fa fa-check" aria-hidden="true"></i>
-            </div>
+      <div class="tasks">
+
+        <div class="task">
+          <div class="task-title">Morning run</div>
+          <div class="check-icon">
+            <i class="fa fa-check" aria-hidden="true"></i>
           </div>
         </div>
-        
-        <div class="completedTasks">
-            <div class="tasks">
-              <div class="task">Morning run</div>
-              <div class="check-icon">
-                <i class="fa fa-check" aria-hidden="true"></i>
-              </div>
-            </div>
-            <div class="tasks">
-              <div class="task">Lunch with Alex</div>
-              <div class="check-icon">
-                <i class="fa fa-check" aria-hidden="true"></i>
-              </div>
-            </div>
-            <div class="tasks">
-              <div class="task">Pay Bills</div>
-              <div class="check-icon">
-                <i class="fa fa-check" aria-hidden="true"></i>
-              </div>
-            </div>
+
+        <div class="task completed">
+          <div class="task-title">Morning run [C]</div>
+          <div class="check-icon">
+            <i class="fa fa-check" aria-hidden="true"></i>
           </div>
+        </div>
       </div>
     </div>
   </body>
