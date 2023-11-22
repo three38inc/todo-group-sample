@@ -20,7 +20,11 @@
     <div class="container">
       <div class="header">
         <div class="header-brand">
-          <div id="date">Monday, October 3</div>
+          <div class="title">
+            <h1>Today</h1>
+            <div class="date" id="date">Monday, October 3</div>
+            <div class="time" id="time">11:11:00 AM</div>
+          </div>
           <div class="header-image">
             <i class="fa fa-calendar"></i>
           </div>
@@ -29,7 +33,7 @@
 
       <div class="task-form">
         <input type="text" placeholder="Type your task here ..." id="inputText">
-        <button class="new-task-btn" id="addBtn">
+        <button class="new-task-btn" id="addBtn" onclick="addNewTask()">
           <i class="fa fa-plus"></i>  
           Add new
         </button>

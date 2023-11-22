@@ -40,6 +40,21 @@ body {
   justify-content: space-between;
   align-items: center;
   font-size: 20px;
+  padding: 5px 10px;
+}
+
+.header-brand .title h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.header-brand .title .date {
+  font-size: 16px;
+}
+.header-brand .title .time {
+  font-size: 14px;
+  opacity: 0.7;
+  text-transform: uppercase;
 }
 
 .header-image {
