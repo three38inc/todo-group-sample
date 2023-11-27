@@ -121,7 +121,30 @@ body {
   width: 80%;
   padding: 10px;
   text-transform: capitalize;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
+
+.task-title .task-date {
+  background-color: #f3f3f3;
+  width: 40px;
+  text-align: center;
+}
+
+.task-title .task-date .month {
+  background-color: #8e001a;
+  font-size: 10px;
+  color: white;
+}
+
+.task-title .task-date .date {
+  color: #555;
+  font-size: 14px;
+  padding: 2px 5px;
+}
+
 
 .task .check-icon {
   color: #d9d2d2;
@@ -152,6 +175,10 @@ body {
   border-left: none;
   text-decoration: line-through;
   color: #AAA;
+}
+
+.task.completed .task-title .task-date {
+  opacity: 0.5;
 }
 
 
