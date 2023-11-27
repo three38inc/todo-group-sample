@@ -1,15 +1,5 @@
-// const savedTasks = require('./data/tasks.json')
-// import data from './data.json';
-// let savedTasks = []
-// fetch('/data/tasks.json')
-//     .then((response) => {
-//         console.log(response);
-//         response.json()
-//     })
-//     .then(res => {
-//         console.log(res)
-//         savedTasks = res
-//     })
+import savedTasks from "./data/tasks.json" assert { type: 'json' };
+
 
 const dateFormatOptions = {
   weekday: "long",
@@ -36,34 +26,12 @@ setInterval(() => {
   document.getElementById("time").innerHTML = timeFormat.format(today);
 }, 1000);
 
+
+
+
 // Todo: saved Tasks to file
 // tasks is having data from data/tasks.json
-let tasks = [
-  {
-    id: '1',
-    title: "Morning Task 1",
-    date: "2023-11-20",
-    status: "pending",
-  },
-  {
-    id: '2',
-    title: "Morning Task 2",
-    date: "2023-11-19",
-    status: "completed",
-  },
-  {
-    id: '3',
-    title: "Morning Task 3",
-    date: "2023-11-20",
-    status: "",
-  },
-  {
-    id: '4',
-    title: "Morning Task 4",
-    date: "2023-11-20",
-    status: "pending",
-  },
-];
+let tasks = savedTasks;
 
 function handleCheckIconClick (event) {
     // identify the task
@@ -83,24 +51,25 @@ function handleCheckIconClick (event) {
     renderTasks()
 }
 
-function addNewTask () {
-    const title = document.getElementById("inputText");
-    if (!title.value) {
-      alert("please enter title");
-      return;
-    }
-  
-    tasks.push({
-        id: tasks.length+1,
-      title: title.value,
-      date: new Date(),
-      status: "pending",
-    });
-  
-    title.value = "";
-  
-    renderTasks();
+const addBtn = document.getElementById('addBtn')
+addBtn.addEventListener('click', () => {
+  const title = document.getElementById("inputText");
+  if (!title.value) {
+    alert("please enter title");
+    return;
   }
+
+  tasks.push({
+      id: tasks.length+1,
+    title: title.value,
+    date: new Date(),
+    status: "pending",
+  });
+
+  title.value = "";
+  renderTasks();
+})
+
 
 const tasksList = document.getElementById("tasks");
 
@@ -111,7 +80,7 @@ function renderTasks() {
         htmlString += `
             <div class="task ${task.status}" id="${task.id}">
                 <div class="task-title">${task.title}</div>
-                <div class="check-icon" onclick="handleCheckIconClick(event)">
+                <div class="check-icon">
                 <i class="fa fa-check" aria-hidden="true"></i>
                 </div>
             </div>
@@ -119,6 +88,10 @@ function renderTasks() {
     });
     // replace the content
     tasksList.innerHTML = htmlString;
+
+    // attach event listeners to buttons
+    const checkIcons = document.querySelectorAll('.check-icon')
+    checkIcons.forEach(icon => icon.addEventListener('click', handleCheckIconClick))
 }
 
 // initial data load
