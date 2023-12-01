@@ -1,12 +1,23 @@
-import savedTasks from "./data/tasks.json" assert { type: "json" };
+// to use persistent storage, localStorage needs to set
+// check if localStorage is already set with key `tasks`
+let tasks = localStorage.getItem('tasks')
 
+if (!tasks) {
+  // initialize the value
+  tasks = []
+  // save it in localStorage
+  localStorage.setItem('tasks', JSON.stringify(tasks))
+} else {
+  tasks = JSON.parse(tasks)
+}
+
+// Date and Time Formating Options
 const dateFormatOptions = {
   weekday: "long",
   year: "numeric",
   month: "short",
   day: "numeric",
 };
-
 const timeFormatOptions = {
   hour: "numeric",
   minute: "numeric",
@@ -17,6 +28,7 @@ const timeFormatOptions = {
 const timeFormat = new Intl.DateTimeFormat("en-GB", timeFormatOptions);
 const dateFormat = new Intl.DateTimeFormat("en-GB", dateFormatOptions);
 
+// interval to keep updating time in the UI
 setInterval(() => {
   const today = new Date();
   // print date
@@ -25,10 +37,7 @@ setInterval(() => {
   document.getElementById("time").innerHTML = timeFormat.format(today);
 }, 1000);
 
-// Todo: saved Tasks to file
-// tasks is having data from data/tasks.json
-let tasks = savedTasks;
-
+// fn for handling the check icon click
 function handleCheckIconClick(event) {
   // identify the task
   const taskId = event.target.parentNode.parentNode.id;
@@ -43,10 +52,14 @@ function handleCheckIconClick(event) {
   } else {
     console.log("Task not found for ", taskId);
   }
+
+  saveTasksToLocalStorage()
+
   // render tasks again
   renderTasks();
 }
 
+// fn to return the HTML structure of a task
 function taskHTML(data) {
 
   const month = new Intl.DateTimeFormat("en-GB", {
@@ -72,6 +85,7 @@ function taskHTML(data) {
   `;
 }
 
+// set a handler for the addBtn click
 const addBtn = document.getElementById("addBtn");
 addBtn.addEventListener("click", () => {
   const title = document.getElementById("inputText");
@@ -87,12 +101,16 @@ addBtn.addEventListener("click", () => {
     status: "pending",
   });
 
+  saveTasksToLocalStorage ();
+
   title.value = "";
   renderTasks();
 });
 
+// get the reference to the tasks list ui in HTML
 const tasksList = document.getElementById("tasks");
 
+// fn to render the tasks in array to tasks-list UI
 function renderTasks() {
   let htmlString = "";
 
@@ -121,6 +139,12 @@ function renderTasks() {
   checkIcons.forEach((icon) =>
     icon.addEventListener("click", handleCheckIconClick)
   );
+}
+
+// fn to save the tasks value to localStorage
+function saveTasksToLocalStorage () {
+  // save to localStorage
+  localStorage.setItem('tasks', JSON.stringify(tasks))
 }
 
 // initial data load
