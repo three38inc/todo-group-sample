@@ -64,13 +64,14 @@ function handleDeleteIconClick(event) {
   // identify the task
   const taskId = event.target.parentNode.parentNode.parentNode.id;
   // change the status of the task
-  const task = tasks.find((t) => t.id == taskId);
-  if (task) {
-    if (task.deleted === true) {
-      task.deleted = false;
-    } else {
-      task.deleted = true;
-    }
+  const taskIndex = tasks.findIndex((t) => t.id == taskId);
+  if (taskIndex) {
+    // if (task.deleted === true) {
+    //   task.deleted = false;
+    // } else {
+    //   task.deleted = true;
+    // }
+    tasks.splice(taskIndex, 1)
   } else {
     console.log("Task not found for ", taskId);
   }
