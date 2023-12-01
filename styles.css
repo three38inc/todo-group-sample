@@ -124,7 +124,20 @@ body {
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 20px;
+}
+
+.task-title .title {
+  flex: 1;
+}
+
+.task-title .delete-icon {
+  color: rgb(161, 34, 2);
+  font-size: 20px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
 }
 
 .task-title .task-date {
@@ -185,4 +198,12 @@ body {
 .task.completed .check-icon {
   color: #45e0d8;
   margin-left: 10px;
+}
+
+.task.deleted {
+  opacity: 0.7;
+  filter: grayscale(1);
+}
+.task.deleted .check-icon {
+  display: none;
 }

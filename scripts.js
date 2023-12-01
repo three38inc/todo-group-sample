@@ -59,6 +59,28 @@ function handleCheckIconClick(event) {
   renderTasks();
 }
 
+// fn for handling the delete icon click
+function handleDeleteIconClick(event) {
+  // identify the task
+  const taskId = event.target.parentNode.parentNode.parentNode.id;
+  // change the status of the task
+  const task = tasks.find((t) => t.id == taskId);
+  if (task) {
+    if (task.deleted === true) {
+      task.deleted = false;
+    } else {
+      task.deleted = true;
+    }
+  } else {
+    console.log("Task not found for ", taskId);
+  }
+
+  saveTasksToLocalStorage()
+
+  // render tasks again
+  renderTasks();
+}
+
 // fn to return the HTML structure of a task
 function taskHTML(data) {
 
@@ -70,13 +92,16 @@ function taskHTML(data) {
   }).format(new Date(data.date));
 
   return `
-    <div class="task ${data.status}" id="${data.id}">
+    <div class="task ${data.status} ${data.deleted ? 'deleted' : ''}" id="${data.id}">
         <div class="task-title">
           <div class="task-date">
             <div class="month">${month}</div>
             <div class="date">${date}</div>
           </div>
           <div class="title">${data.title}</div>
+          <div class="delete-icon">
+            <i class="fa fa-${data.deleted ? 'rotate-left' : 'trash'}" aria-hidden="true"></i>
+          </div>
         </div>
         <div class="check-icon">
           <i class="fa fa-check" aria-hidden="true"></i>
@@ -99,6 +124,7 @@ addBtn.addEventListener("click", () => {
     title: title.value,
     date: new Date(),
     status: "pending",
+    deleted: false
   });
 
   saveTasksToLocalStorage ();
@@ -121,14 +147,18 @@ function renderTasks() {
   });
 
   // filter tasks based on completion
-  const pendingTasks = tasks.filter((task) => task.status !== "completed");
-  const completedTasks = tasks.filter((task) => task.status === "completed");
+  const pendingTasks = tasks.filter((task) => task.status !== "completed" && task.deleted === false);
+  const completedTasks = tasks.filter((task) => task.status === "completed" && task.deleted === false);
+  const deletedTasks = tasks.filter((task) =>  task.deleted === true);
 
   // for each task create HTML String
   pendingTasks.forEach((task) => {
     htmlString += taskHTML(task);
   });
   completedTasks.forEach((task) => {
+    htmlString += taskHTML(task);
+  });
+  deletedTasks.forEach((task) => {
     htmlString += taskHTML(task);
   });
   // replace the content
@@ -138,6 +168,11 @@ function renderTasks() {
   const checkIcons = document.querySelectorAll(".check-icon");
   checkIcons.forEach((icon) =>
     icon.addEventListener("click", handleCheckIconClick)
+  );
+
+  const deleteIcons = document.querySelectorAll(".delete-icon");
+  deleteIcons.forEach((icon) =>
+    icon.addEventListener("click", handleDeleteIconClick)
   );
 }
 
