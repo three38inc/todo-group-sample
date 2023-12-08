@@ -9,33 +9,10 @@ if (!tasks) {
   localStorage.setItem('tasks', JSON.stringify(tasks))
 } else {
   tasks = JSON.parse(tasks)
+  tasks = tasks.map(tObj => {
+    return new Task(tObj)
+  })
 }
-
-// Date and Time Formating Options
-const dateFormatOptions = {
-  weekday: "long",
-  year: "numeric",
-  month: "short",
-  day: "numeric",
-};
-const timeFormatOptions = {
-  hour: "numeric",
-  minute: "numeric",
-  second: "numeric",
-  hour12: true,
-};
-
-const timeFormat = new Intl.DateTimeFormat("en-GB", timeFormatOptions);
-const dateFormat = new Intl.DateTimeFormat("en-GB", dateFormatOptions);
-
-// interval to keep updating time in the UI
-setInterval(() => {
-  const today = new Date();
-  // print date
-  document.getElementById("date").innerHTML = dateFormat.format(today);
-  // print time
-  document.getElementById("time").innerHTML = timeFormat.format(today);
-}, 1000);
 
 // fn for handling the check icon click
 function handleCheckIconClick(event) {
@@ -44,11 +21,8 @@ function handleCheckIconClick(event) {
   // change the status of the task
   const task = tasks.find((t) => t.id == taskId);
   if (task) {
-    if (task.status == "completed") {
-      task.status = ""; // 'pending'
-    } else {
-      task.status = "completed";
-    }
+    console.log('toggle', task)
+    task.toggleStatus()
   } else {
     console.log("Task not found for ", taskId);
   }
@@ -64,14 +38,11 @@ function handleDeleteIconClick(event) {
   // identify the task
   const taskId = event.target.parentNode.parentNode.parentNode.id;
   // change the status of the task
-  const taskIndex = tasks.findIndex((t) => t.id == taskId);
-  if (taskIndex) {
-    // if (task.deleted === true) {
-    //   task.deleted = false;
-    // } else {
-    //   task.deleted = true;
-    // }
-    tasks.splice(taskIndex, 1)
+  // const taskIndex = tasks.findIndex((t) => t.id == taskId);
+  // tasks.splice(taskIndex, 1)
+  const task = tasks.find((t) => t.id == taskId);
+  if (task) {
+    task.toggleDelete()
   } else {
     console.log("Task not found for ", taskId);
   }
@@ -119,14 +90,8 @@ addBtn.addEventListener("click", () => {
     alert("please enter title");
     return;
   }
-
-  tasks.push({
-    id: tasks.length + 1,
-    title: title.value,
-    date: new Date(),
-    status: "pending",
-    deleted: false
-  });
+  const newTask = new Task({ title: title.value })
+  tasks.push(newTask);
 
   saveTasksToLocalStorage ();
 
